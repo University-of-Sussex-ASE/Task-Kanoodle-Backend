@@ -1,0 +1,38 @@
+name: CICD
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v3
+      - name: Login to docker hub
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+      - name: Build docker image
+        run: docker build -t group4asesussex/kanoodle-nodejs-app:latest .
+      - name: Publish image to docker hub
+        run: docker push group4asesussex/kanoodle-nodejs-app:latest
+
+  deploy:
+    needs: build
+    runs-on: [aws-ec2]
+    steps:
+      - name: Pull image from docker hub
+        run: docker pull group4asesussex/kanoodle-nodejs-app:latest
+      - name: Delete old container
+        run: docker rm -f kanoodle-app-container
+      - name: Run docker container
+        run: |
+          docker run --restart=always -d -p 8010:80 --name kanoodle-app-container \
+            -e CREDENTIALS=${{ secrets.CREDENTIALS }} \
+            -e NODE_ENV=${{ secrets.NODE_ENV }} \
+            -e PORT=${{ secrets.PORT }} \
+            -e SECRET_KEY=${{ secrets.SECRET_KEY }} \
+            -e LOG_FORMAT=${{ secrets.LOG_FORMAT }} \
+            -e LOG_DIR=${{ secrets.LOG_DIR }} \
+            -e ORIGIN=${{ secrets.ORIGIN }} \
+            group4asesussex/kanoodle-nodejs-app:latest
