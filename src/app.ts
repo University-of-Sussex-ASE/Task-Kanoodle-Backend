@@ -56,8 +56,8 @@ export class App {
   private initializeRoutes(controllers: Function[]) {
     useExpressServer(this.app, {
       cors: {
-        origin: ORIGIN,
-        credentials: CREDENTIALS,
+        origin: '*',
+        credentials: true,
       },
       controllers: controllers,
       defaultErrorHandler: false,

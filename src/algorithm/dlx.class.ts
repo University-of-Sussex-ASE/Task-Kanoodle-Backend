@@ -16,10 +16,10 @@ export class DLX {
     return dlx.search(dlx.columnList_, [], null);
   }
 
-  public static solveAll<T extends RowSupplier>(rowInfo: T[], numColumns: number): T[][] {
+  public static solveAll<T extends RowSupplier>(rowInfo: T[], numColumns: number, limit?: number): T[][] {
     const solutions: T[][] = [];
     const dlx = new DLX(rowInfo, numColumns);
-    dlx.search(dlx.columnList_, [], solutions);
+    dlx.search(dlx.columnList_, [], solutions, limit);
     return solutions;
   }
 
@@ -62,8 +62,8 @@ export class DLX {
   }
 
   count = 0;
-  private search(columns: Header, partialSolution: RowSupplier[], allSolutions: RowSupplier[][]): RowSupplier[] {
-    if (this.isColumnListEmpty(columns)) {
+  private search(columns: Header, partialSolution: RowSupplier[], allSolutions: RowSupplier[][], limit?: number): RowSupplier[] {
+    if (this.isColumnListEmpty(columns) || (limit && this.count >= limit)) {
       return partialSolution;
     }
     const column = this.selectColumn(columns);
@@ -73,10 +73,14 @@ export class DLX {
       for (const r of x.row.cells) {
         this.eliminateColumn(r.column);
       }
-      const solution = this.search(columns, partialSolution, allSolutions);
+      const solution = this.search(columns, partialSolution, allSolutions, limit);
       if (solution !== null) {
         if (allSolutions !== null) {
+          if (limit && this.count >= limit) {
+            return partialSolution;
+          }
           allSolutions.push([...solution]);
+          this.count++;
         } else {
           return solution;
         }

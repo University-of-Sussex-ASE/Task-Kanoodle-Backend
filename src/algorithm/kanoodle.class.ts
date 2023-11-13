@@ -39,10 +39,10 @@ class Kanoodle {
     return 'No solution found';
   }
 
-  static findAllSolutions(pieceDescriptions, gridWidth, gridHeight, initalPieces: InitialPiece[] = []) {
+  static findAllSolutions(pieceDescriptions, gridWidth, gridHeight, initalPieces: InitialPiece[] = [], limit?: number) {
     const pieces = this.createPieces(pieceDescriptions, gridWidth, gridHeight);
     const rows = this.createSearchRows(pieces, gridWidth, gridHeight, initalPieces);
-    const solutions = DLX.solveAll(rows, gridWidth * gridHeight + pieces.length);
+    const solutions = DLX.solveAll(rows, gridWidth * gridHeight + pieces.length, limit);
     return solutions;
   }
 
