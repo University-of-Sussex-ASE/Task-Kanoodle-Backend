@@ -4,7 +4,7 @@
  *  production mode :: pm2 start ecosystem.config.js --only prod
  *  development mode :: pm2 start ecosystem.config.js --only dev
  */
- module.exports = {
+module.exports = {
   apps: [
     {
       name: 'prod', // pm2 start App name
@@ -19,9 +19,15 @@
       merge_logs: true, // if true, stdout and stderr will be merged and sent to pm2 log
       output: './logs/access.log', // pm2 log file
       error: './logs/error.log', // pm2 error log file
-      env: { // environment variable
-        PORT: 3000,
+      env: {
+        // environment variable
+        PORT: 8010,
         NODE_ENV: 'production',
+        ORIGIN: '*',
+        CREDENTIALS: true,
+        SECRET_KEY: 'secretKey',
+        LOG_FORMAT: 'dev',
+        LOG_DIR: '../logs',
       },
     },
     {
@@ -38,9 +44,15 @@
       merge_logs: true, // if true, stdout and stderr will be merged and sent to pm2 log
       output: './logs/access.log', // pm2 log file
       error: './logs/error.log', // pm2 error log file
-      env: { // environment variable
-        PORT: 3000,
-        NODE_ENV: 'development',
+      env: {
+        // environment variable
+        PORT: 8010,
+        NODE_ENV: 'production',
+        ORIGIN: '*',
+        CREDENTIALS: true,
+        SECRET_KEY: 'secretKey',
+        LOG_FORMAT: 'dev',
+        LOG_DIR: '../logs',
       },
     },
   ],
