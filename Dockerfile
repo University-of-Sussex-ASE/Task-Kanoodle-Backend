@@ -11,7 +11,9 @@ WORKDIR /app
 RUN npm install --legacy-peer-deps
 
 # Set Env
-ENV NODE_ENV production
+ENV NODE_ENV dev
+ENV PM2_PUBLIC_KEY q5ydefvfpxdslq6
+ENV PM2_SECRET_KEY 18asd6co4f0q5qn
 
 EXPOSE 80
 
