@@ -12,7 +12,11 @@
     "test": "jest --forceExit --detectOpenHandles",
     "lint": "eslint --ignore-path .gitignore --ext .ts src",
     "lint:fix": "npm run lint -- --fix",
+<<<<<<< HEAD
     "deploy:prod": "npm run build && pm2 start ecosystem.config.js --only prod",
+=======
+    "deploy:prod": "npm run build && pm2-runtime ecosystem.config.js --only prod",
+>>>>>>> 5bc5449f559dee86b3ae621fe447b0b88b7af2ec
     "deploy:dev": "pm2-runtime ecosystem.config.js --only dev"
   },
   "dependencies": {
