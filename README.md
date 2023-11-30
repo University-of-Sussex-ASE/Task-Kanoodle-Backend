@@ -1,6 +1,6 @@
-# Kanoodle Solver Backend
+# Algorithm Solver Backend
 
-This backend application is designed to solve the Kanoodle puzzle algorithm. It utilizes Express.js, TypeScript, PM2, and Docker to provide a robust and scalable solution.
+This backend application is designed to solve the Kanoodle puzzle algorithm and the Polysphere Pyramid Puzzle. It utilizes Express.js, TypeScript, PM2, and Docker to provide a robust and scalable solution.
 
 ## Table of Contents
 
@@ -14,7 +14,7 @@ This backend application is designed to solve the Kanoodle puzzle algorithm. It 
 
 ## Introduction
 
-This backend application serves as a solver for the Kanoodle puzzle algorithm. It is built with Express.js, TypeScript, PM2, and Docker to ensure flexibility, scalability, and ease of deployment.
+This backend application serves as a solver for the Kanoodle puzzle algorithm and the Polysphere Pyramid Puzzle. It is built with Express.js, TypeScript, PM2, and Docker to ensure flexibility, scalability, and ease of deployment.
 
 ## Getting Started
 
@@ -53,6 +53,8 @@ Ensure you have the following installed on your machine:
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Algorithm
+## Kanoodle Puzzle Algorithm
 The algorithm used in this solver is based on the version available at [this Gist](https://gist.github.com/anonymous/75281bc0b5063453126c). Special thanks to the original author for providing this foundation.
 
+## Pyramid Puzzle Algorithm
+The algorithm used in this solver is based on the version available at [IQPyramidSolver](https://github.com/zigzag2050/IQPyramidSolver). Special thanks to the original author for providing this foundation.
