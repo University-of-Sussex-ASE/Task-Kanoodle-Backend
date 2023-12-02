@@ -76,6 +76,20 @@ function solvePyramid(initialPieces = []) {
         originalPiece.rotate();
         pieces.push(JSON.parse(JSON.stringify(originalPiece)));
         break;
+      case -4:
+        for (let i = 0; i < 1; i++) {
+          console.log('runnnn');
+          originalPiece.rotate();
+          pieces.push(JSON.parse(JSON.stringify(originalPiece)));
+        }
+        console.log(originalPiece);
+        originalPiece.flip();
+        pieces.push(JSON.parse(JSON.stringify(originalPiece)));
+        for (let i = 0; i < 1; i++) {
+          originalPiece.rotate();
+          pieces.push(JSON.parse(JSON.stringify(originalPiece)));
+        }
+        break;
       case 1:
       default:
         break;

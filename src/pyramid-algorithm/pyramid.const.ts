@@ -29,7 +29,7 @@ const PieceData = [
 //     [0b0100, 0b1110, 0b0100, 0b0000]
 // ];
 
-const rotates = [4, 8, 8, 4, 8, 8, 4, 8, 8, 8, 8, 8];
+const rotates = [4, 8, 8, 4, 8, 8, -4, 8, 4, 8, 4, 4];
 const piecemap = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'];
 const piececolor = [
   '#e4240d',
